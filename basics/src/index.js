@@ -21,6 +21,10 @@ const typeDefs = `
         search(query:String): [Book!]!
     }
 
+    type Mutation {
+        createBook(name:String!, author: ID!): Book!
+    }
+
     type Book {
         id: ID!
         name: String!
@@ -48,6 +52,25 @@ const resolvers = {
             if (!args.query) return bookData;
 
             return bookData.filter(b => b.name.toLowerCase().includes(args.query.toLowerCase()))
+        }
+    },
+    Mutation: {
+        createBook: (parent, { name, author }, ctx, info) => {
+
+            if (!authors.find(a => a.id == Number(author))) {
+                throw Error("Author Invalid")
+            }
+
+            const id = bookData[bookData.length - 1].id + 1
+
+            console.log(id);
+
+            const book = { id: id, name: name, author: Number(author) }
+
+            bookData.push(bookData);
+
+            return book;
+
         }
     },
     Book: {
