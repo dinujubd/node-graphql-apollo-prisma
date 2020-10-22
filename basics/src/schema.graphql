@@ -1,25 +1,25 @@
 type Query {
-        hello:String!
-        title:String
-        balance: Int!
-        owe: Float
-        books: [Book!]
-        greet(name: String!): String!
-        search(query:String): [Book!]!
-    }
+    hello:String!
+    title:String
+    balance: Int!
+    owe: Float
+    books: [Book!]
+    greet(name: String!): String!
+    search(query:String): [Book!]!
+}
 
-    type Mutation {
-        createBook(name:String!, author: ID!): Book!
-    }
+type Mutation {
+    createBook(name:String!, author: ID!): Book!
+}
 
-    type Book {
-        id: ID!
-        name: String!
-        author: Author!
-    }
+type Book {
+    id: ID!
+    name: String!
+    author: Author!
+}
 
-    type Author {
-        id: ID!
-        name: String!
-        books: [Book!]
-    }
+type Author {
+    id: ID!
+    name: String!
+    books: [Book!]
+}

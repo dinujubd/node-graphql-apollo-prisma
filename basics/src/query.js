@@ -3,8 +3,8 @@ export default {
     title: _ => null,
     balance: _ => 500,
     owe: _ => 50.5,
-    books: _ => {
-        return bookData;
+    books: (a, b, { db }) => {
+        return db.bookData;
     },
     greet: (_, { name }) => `Hello ${name}`,
     search: (_, args, { db }) => {
