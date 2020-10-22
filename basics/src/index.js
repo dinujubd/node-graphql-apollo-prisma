@@ -7,6 +7,7 @@ const typeDefs = `
         balance: Int!
         owe: Float
         books: [Book!]
+        greet(name: String!): String!
     }
 
     type Book {
@@ -20,7 +21,8 @@ const resolvers = {
         title: _ => null,
         balance: _ => 500,
         owe: _ => 50.5,
-        books: _ => [{ name: "art of war" }]
+        books: _ => [{ name: "art of war" }],
+        greet: (_, { name }) => `Hello ${name}`
     }
 
 }
