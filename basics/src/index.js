@@ -1,6 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga'
 
-const books = [
+const bookData = [
     { id: 1, name: "art of war", author: 1 },
     { id: 2, name: "the alchemist", author: 2 }
 ]
@@ -30,6 +30,7 @@ const typeDefs = `
     type Author {
         id: ID!
         name: String!
+        books: [Book!]
     }
 `
 
@@ -40,13 +41,13 @@ const resolvers = {
         balance: _ => 500,
         owe: _ => 50.5,
         books: _ => {
-            return books;
+            return bookData;
         },
         greet: (_, { name }) => `Hello ${name}`,
         search: (_, args) => {
-            if (!args.query) return books;
+            if (!args.query) return bookData;
 
-            return books.filter(b => b.name.toLowerCase().includes(args.query.toLowerCase()))
+            return bookData.filter(b => b.name.toLowerCase().includes(args.query.toLowerCase()))
         }
     },
     Book: {
@@ -57,7 +58,19 @@ const resolvers = {
 
             return [];
         }
+    },
+    Author: {
+        books: (parent, args, ctx, info) => {
+
+            console.log(parent);
+
+            if (parent.id) {
+                return bookData.filter(b => b.author === parent.id)
+            }
+            return [];
+        }
     }
+
 
 }
 
