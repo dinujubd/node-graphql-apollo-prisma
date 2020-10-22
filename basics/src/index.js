@@ -60,17 +60,11 @@ const resolvers = {
             if (!authors.find(a => a.id == Number(author))) {
                 throw Error("Author Invalid")
             }
-
             const id = bookData[bookData.length - 1].id + 1
-
-            console.log(id);
-
             const book = { id: id, name: name, author: Number(author) }
 
             bookData.push(bookData);
-
             return book;
-
         }
     },
     Book: {
