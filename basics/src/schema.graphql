@@ -12,6 +12,10 @@ type Mutation {
     createBook(name:String!, author: ID!): Book!
 }
 
+type Subscription {
+    count: Int!
+}
+
 type Book {
     id: ID!
     name: String!
