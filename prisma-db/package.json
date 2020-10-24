@@ -1,0 +1,26 @@
+{
+  "name": "prisma-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js --ext js,graphql --exec babel-node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@prisma/cli": "^2.9.0",
+    "babel-cli": "^6.26.0",
+    "babel-node": "0.0.1-security",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "@nexus/schema": "^0.16.0",
+    "@prisma/client": "^2.9.0",
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0",
+    "nexus-plugin-prisma": "^0.22.0"
+  }
+}
